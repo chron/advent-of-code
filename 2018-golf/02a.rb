@@ -1,4 +1,4 @@
-a=b=0;DATA.readlines.map{|s|s.gsub!(/./){s.count$&};a+=s[?2]?1:0;b+=s[?3]?1:0};p a*b
+a=b=0;DATA.readlines.map{|s|a+=s.gsub!(/./){s.count$&}[?2]?1:0;b+=s[?3]?1:0};p a*b
 __END__
 evsialkqydurohxqpwbcugtjmh
 evsialkqydurohxzssbcngtjmv
