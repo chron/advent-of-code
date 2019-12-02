@@ -1,23 +1,16 @@
-def run(input)
-  input
-    .split
-    .map(&:to_i)
-    .map { |i| (i / 3).floor - 2 }
-    .sum
+require_relative 'scaffold'
+
+class Day1a < Scaffold
+  test_case 12, 2
+  test_case 14, 2
+  test_case 1969, 654
+  test_case 100756, 33583
+
+  def run
+    input
+      .split
+      .map(&:to_i)
+      .map { |i| (i / 3).floor - 2 }
+      .sum
+  end
 end
-
-test_cases = [
-  ['12', '2'],
-  ['14', '2'],
-  ['1969', '654'],
-  ['100756', '33583'],
-]
-
-test_cases.each_with_index do |(input, expected), index|
-  actual = run(input)
-
-  raise "Test case #{index + 1} failed! #{actual}" if actual.to_s != expected.to_s
-end
-
-input = File.read("#{File.dirname($0)}/input/#{File.basename($0)[/\d+/]}.txt").chomp
-puts run(input)
