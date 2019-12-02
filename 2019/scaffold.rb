@@ -19,8 +19,10 @@ class Scaffold
     end
 
     def check_test_cases
+      return 0 if @test_cases.nil?
+
       @test_cases.each_with_index.count do |(input, expected), index|
-        actual = new(input.to_s).run
+        actual = new(input.to_s, true).run
 
         if actual.to_s != expected.to_s
           puts "Test case #{index + 1} failed!"
@@ -43,8 +45,9 @@ class Scaffold
 
   attr_reader :input
 
-  def initialize(input)
+  def initialize(input, testing = false)
     @input = input
+    @testing = testing
   end
 
   def run
